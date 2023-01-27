@@ -4,9 +4,16 @@ import FriendsList from '../../components/FriendsList';
 
 export default function Home() {
   const [name, setName] = useState('');
+  const [friends, setFriends] = useState([]);
 
-  function handleSearch() {
-
+  async function handleSearch() {
+    try {
+      const response = await fetch(`http://192.168.1.35:3333/friends?q=${name}`);
+      const data = await response.json();
+      setFriends(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -25,7 +32,7 @@ export default function Home() {
         />
 
 
-        <FriendsList data={[]}/>
+        <FriendsList data={friends}/>
     </View>
   )
 }
