@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
+import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import FriendsList from '../../components/FriendsList';
 
@@ -8,7 +8,7 @@ export default function Home() {
 
   async function handleSearch() {
     try {
-      const response = await fetch(`http://192.168.1.35:3333/friends?q=${name}`);
+      const response = await fetch(`http://192.168.5.148:3333/friends?q=${name}`);
       const data = await response.json();
       setFriends(data);
     } catch (error) {
@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-        <Text>Amigos</Text>
+        <Text style={styles.title}>Amigos</Text>
 
         <TextInput 
           placeholder='Nome do amigo'
@@ -31,8 +31,9 @@ export default function Home() {
           onPress={handleSearch}
         />
 
-
-        <FriendsList data={friends}/>
+        <ScrollView style={styles.list}>
+          <FriendsList data={friends}/>
+        </ScrollView>
     </View>
   )
 }
@@ -40,12 +41,19 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 100,
+    marginTop: 60,
     padding: 25,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
   },
   input: {
     borderWidth: 1,
     padding: 7,
-    marginBottom: 10,
+    marginVertical: 10,
+  },
+  list: {
+    marginTop: 16
   }
 })
