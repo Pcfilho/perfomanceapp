@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { memo } from 'react'
 
 type Data = {
   name: string;
@@ -10,7 +10,7 @@ type Props = {
   data: Data;
 }
 
-export default function Friend({
+function FriendComponent({
   data
 } : Props) {
   return (
@@ -19,3 +19,7 @@ export default function Friend({
       </Text>
   )
 }
+
+export const Friend = memo(FriendComponent, (prevProps, nextProps) => {
+  return Object.is(prevProps.data, nextProps.data);
+})

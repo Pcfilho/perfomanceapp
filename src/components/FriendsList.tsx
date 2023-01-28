@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import Friend from './Friend';
+import { Friend } from './Friend';
 
 type Data = {
   id: number;
