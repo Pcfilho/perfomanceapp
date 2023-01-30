@@ -1,6 +1,7 @@
-import { View, Text } from 'react-native'
+import { View, Text, FlatList } from 'react-native'
 import React, { useMemo } from 'react'
 import { Friend } from './Friend';
+import { FlashList } from '@shopify/flash-list';
 
 type Data = {
   id: number;
@@ -24,16 +25,20 @@ export default function FriendsList({
   }, [data]);
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Text>
         Total de likes: {totalLikes}
       </Text>
 
-      {
-        data.map(friend => (
-          <Friend key={String(friend.id)} data={friend} follow={follow}/>
-        ))
-      }
+
+      <FlashList 
+        data={data}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => (
+          <Friend key={String(item.id)} data={item} follow={follow}/> 
+        )}
+        estimatedItemSize={200}
+      />       
     </View>
   )
 }

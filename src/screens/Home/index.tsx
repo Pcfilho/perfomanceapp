@@ -35,9 +35,9 @@ export default function Home() {
           onPress={handleSearch}
         />
 
-        <ScrollView style={styles.list}>
-          <FriendsList data={friends} follow={handleFollow}/>
-        </ScrollView>
+        <View style={styles.list}>
+            <FriendsList data={friends} follow={handleFollow}/>
+          </View>
     </View>
   )
 }
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   list: {
-    marginTop: 16
+    marginTop: 16,
+    flex: 1,
   }
 })
