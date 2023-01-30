@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "server": "json-server -d 750 -w -H 192.168.5.148 -p 3333 ./src/api/server.js"
+    "server": "json-server -d 750 -w -H 192.168.1.35 -p 3333 ./src/api/server.js"
   },
   "dependencies": {
     "expo": "~47.0.12",

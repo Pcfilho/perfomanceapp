@@ -8,7 +8,7 @@ export default function Home() {
 
   async function handleSearch() {
     try {
-      const response = await fetch(`http://192.168.5.148:3333/friends?q=${name}`);
+      const response = await fetch(`http://192.168.1.35:3333/friends?q=${name}`);
       const data = await response.json();
       setFriends(data);
     } catch (error) {
