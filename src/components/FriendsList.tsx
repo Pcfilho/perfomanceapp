@@ -10,10 +10,12 @@ type Data = {
 
 type Props = {
   data: Data[];
+  follow: () => void;
 }
 
 export default function FriendsList({
-  data
+  data,
+  follow
 } : Props) {
   const totalLikes = useMemo(() => {
     return data.reduce((likes, friend) => {
@@ -29,7 +31,7 @@ export default function FriendsList({
 
       {
         data.map(friend => (
-          <Friend key={String(friend.id)} data={friend}/>
+          <Friend key={String(friend.id)} data={friend} follow={follow}/>
         ))
       }
     </View>

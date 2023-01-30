@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import React, { memo } from 'react'
 
 type Data = {
@@ -7,16 +7,27 @@ type Data = {
 }
 
 type Props = {
-  data: Data;
+  data: Data,
+  follow: () => void;
 }
 
 function FriendComponent({
-  data
+  data,
+  follow
 } : Props) {
   return (
+    <View style={{
+      marginBottom: 10,
+    }}>
+
       <Text>
         { data.name } - Likes: { data.likes }
       </Text>
+    
+      <TouchableOpacity onPress={follow}>
+        <Text>Deixar de Seguir</Text>
+      </TouchableOpacity>
+    </View>
   )
 }
 
